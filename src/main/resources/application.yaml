@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: OMS
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:order_management}
+    username: ${DB_USERNAME:order_user}
+    password: ${DB_PASSWORD:order_password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:rabbitmq_user}
+    password: ${RABBITMQ_PASSWORD:rabbitmq_password}
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml

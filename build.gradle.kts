@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") version "3.4.0"
     id("io.spring.dependency-management") version "1.1.6"
     kotlin("plugin.jpa") version "1.9.25"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "me.andrewtinyakov"
@@ -12,6 +13,13 @@ version = "0.0.1-SNAPSHOT"
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
+    archiveClassifier.set("")
+    manifest {
+        attributes["Main-Class"] = "me.andrewtinyakov.oms.ApplicationKt"
     }
 }
 
